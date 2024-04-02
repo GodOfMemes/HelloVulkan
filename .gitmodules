@@ -1,27 +1,27 @@
 [submodule "External/stb"]
-	path = External/stb
+	path = vendor/stb
 	url = https://github.com/nothings/stb
 [submodule "External/assimp"]
-	path = External/assimp
+	path = vendor/assimp
 	url = https://github.com/assimp/assimp.git
 [submodule "External/glm"]
-	path = External/glm
+	path = vendor/glm
 	url = https://github.com/g-truc/glm.git
 [submodule "External/volk"]
-	path = External/volk
+	path = vendor/volk
 	url = https://github.com/zeux/volk.git
 [submodule "External/ImGui"]
-	path = External/ImGui
+	path = vendor/ImGui
 	url = https://github.com/ocornut/imgui.git
 [submodule "External/VulkanMemoryAllocator"]
-	path = External/VulkanMemoryAllocator
+	path = vendor/VulkanMemoryAllocator
 	url = https://github.com/GPUOpen-LibrariesAndSDKs/VulkanMemoryAllocator
 [submodule "External/tracy"]
-	path = External/tracy
+	path = vendor/tracy
 	url = https://github.com/wolfpld/tracy.git
 [submodule "External/glfw"]
-	path = External/glfw
+	path = vendor/glfw
 	url = https://github.com/glfw/glfw.git
 [submodule "External/ImGuizmo"]
-	path = External/ImGuizmo
+	path = vendor/ImGuizmo
 	url = https://github.com/CedricGuillemet/ImGuizmo
