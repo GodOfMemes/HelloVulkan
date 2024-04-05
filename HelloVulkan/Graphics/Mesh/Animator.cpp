@@ -1,0 +1,71 @@
+#include "Animator.hpp"
+#include <iostream>
+
+Animator::Animator()
+{
+	Reset();
+}
+
+void Animator::UpdateAnimation(
+	Animation* animation,
+	std::vector<glm::mat4>& skinningMatrices,
+	float dt)
+{
+	_deltaTime = dt;
+	_currentTime += animation->GetTicksPerSecond() * _deltaTime;
+	_currentTime = fmod(_currentTime, animation->GetDuration());
+	glm::mat4 initMat = glm::mat4(1.0f);
+	CalculateBoneTransform(
+		animation,
+		&(animation->rootNode),
+		initMat,
+		skinningMatrices);
+}
+
+void Animator::Reset()
+{
+	_currentTime = 0.0f;
+}
+
+void Animator::CalculateBoneTransform(
+	Animation* animation,
+	const AnimationNode* node,
+	const glm::mat4& parentTransform,
+	std::vector<glm::mat4>& skinningMatrices)
+{
+	const std::string nodeName = node->name_;
+	glm::mat4 nodeTransform = node->transformation_;
+	Bone* bone = animation->GetBone(nodeName);
+
+	if (bone)
+	{
+		bone->Update(_currentTime);
+		nodeTransform = bone->GetLocalTransform();
+	}
+
+	glm::mat4 globalTransformation = parentTransform * nodeTransform;
+
+	int index = -1;
+	glm::mat4 offsetMatrix = glm::mat4(1.0f);
+	if (animation->GetIndexAndOffsetMatrix(nodeName, index, offsetMatrix))
+	{
+		if (index >= skinningMatrices.size())
+		{
+			std::cerr << "finalBoneMatrices_ is not long enough, index = " << index << 
+				", skinningMatrices size = " << skinningMatrices.size() << '\n';
+		}
+		else
+		{
+			skinningMatrices[index] = globalTransformation * offsetMatrix;
+		}
+	}
+
+	for (uint32_t i = 0; i < node->childrenCount_; ++i)
+	{
+		CalculateBoneTransform(
+			animation,
+			&node->children_[i],
+			globalTransformation,
+			skinningMatrices);
+	}
+}
