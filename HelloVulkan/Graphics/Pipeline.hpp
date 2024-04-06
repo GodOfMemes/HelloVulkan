@@ -155,6 +155,7 @@ struct PipelineCreateInfo
 	}
 };
 
+// TODO: Create an actual material pipeline
 /*
 This mainly encapsulates a graphics pipeline, framebuffers, and a render pass.
 A pipeline can be either

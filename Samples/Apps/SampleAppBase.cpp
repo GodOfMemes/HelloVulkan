@@ -21,7 +21,7 @@ void SampleBase::InitSharedResource()
 void SampleBase::OnUpdate(double dt)
 {
     frameCounter.Update(dt);
-    //controller.Update(dt);
+    controller.Update(dt);
 
     if (uiData.mouseLeftPressed_)
 	{
@@ -40,7 +40,7 @@ void SampleBase::OnFramebufferResize(const glm::ivec2 &size)
     Application::OnFramebufferResize(size);
 
     camera->SetAspectRatio((float)size.x / size.y);
-    InitSharedResource();
+    //InitSharedResource();
 }
 
 void SampleBase::OnKey(Keys key, InputAction action, int mods)

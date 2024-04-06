@@ -1,7 +1,7 @@
 #include "IBLResource.hpp"
-#include "Pipelines/Equirect2CubePipeline.hpp"
-#include "Pipelines/CubeFilterPipeline.hpp"
-#include "Pipelines/BRDFLUTPipeline.hpp"
+#include "Pipelines/OffScreen/Equirect2CubePipeline.hpp"
+#include "Pipelines/OffScreen/CubeFilterPipeline.hpp"
+#include "Pipelines/Compute/BRDFLUTPipeline.hpp"
 #include <Utility/Utility.hpp>
 
 IBLResource::IBLResource(GraphicsDevice* gd, const std::string& hdrFile)

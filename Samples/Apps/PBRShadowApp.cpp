@@ -3,7 +3,7 @@
 #include "imgui.h"
 
 PBRShadowApp::PBRShadowApp()
-    : SampleBase(AppConfig{ .Title = "Test" })
+    : SampleBase(AppConfig{ .Title = "PBR Shadow" })
 {
     
 }
@@ -102,6 +102,9 @@ void PBRShadowApp::OnUpdate(double dt)
         .position = glm::vec4(camera->GetPosition(),1)
     };
     skybox->SetCameraUBO(ubo);
+	pbrOpaquePtr_->SetCameraUBO(ubo);
+	pbrTransparentPtr_->SetCameraUBO(ubo);
+	lightPtr_->SetCameraUBO(ubo);
 
     shadowPtr_->UpdateShadow(shadowResource, lightResource->lights_[0].position_);
     pbrOpaquePtr_->SetShadowMapConfigUBO(shadowResource->shadowUBO_);

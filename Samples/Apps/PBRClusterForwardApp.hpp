@@ -1,24 +1,24 @@
 #pragma once
 
-#include "Graphics/Mesh/MeshScene.hpp"
+#include "Apps/SampleAppBase.hpp"
+#include "Pipelines/Compute/AABBGeneratorPipeline.hpp"
+#include "Pipelines/Compute/LightCullingPipeline.hpp"
 #include "Pipelines/OffScreen/LightRenderPipeline.hpp"
-#include "Pipelines/OffScreen/PBRShadowPipeline.hpp"
+#include "Pipelines/OffScreen/PBRClusterForwardPipeline.hpp"
 #include "Pipelines/OffScreen/ResolveMSPipeline.hpp"
-#include "Pipelines/OffScreen/ShadowPipeline.hpp"
 #include "Pipelines/OffScreen/SkyboxPipeline.hpp"
 #include "Pipelines/OnScreen/ClearPipeline.hpp"
 #include "Pipelines/OnScreen/FinishPipeline.hpp"
 #include "Pipelines/OnScreen/ImGuiPipeline.hpp"
 #include "Pipelines/OnScreen/TonemapPipeline.hpp"
-#include "Resources/IBLResource.hpp"
+#include "Resources/ClusterForwardResource.hpp"
 #include "Resources/LightResource.hpp"
-#include "Resources/ShadowResource.hpp"
-#include "SampleAppBase.hpp"
+#include "Resources/IBLResource.hpp"
 
-class PBRShadowApp : public SampleBase
+class PBRClusterForwardApp : public SampleBase
 {
 public:
-    PBRShadowApp();
+    PBRClusterForwardApp();
 protected:
     void OnLoad() override;
     void OnUpdate(double dt) override;
@@ -28,16 +28,17 @@ protected:
     // TODO: Move Clear and Finsh to graphicsDevice
     ClearPipeline* clear = nullptr;
     SkyBoxPipeline* skybox = nullptr;
-    ShadowPipeline* shadowPtr_ = nullptr;
-    PBRShadowPipeline* pbrOpaquePtr_ = nullptr;
-	PBRShadowPipeline* pbrTransparentPtr_ = nullptr;
+    AABBGeneratorPipeline* aabbPtr_ = nullptr;
+	LightCullingPipeline* lightCullPtr_ = nullptr;
+    PBRClusterForwardPipeline* pbrOpaquePtr_ = nullptr;
+	PBRClusterForwardPipeline* pbrTransparentPtr_ = nullptr;
 	LightRenderPipeline* lightPtr_ = nullptr;
     ResolveMSPipeline* resolve = nullptr;
     TonemapPipeline* tonemap = nullptr;
     ImGuiPipeline* imguiPtr_ = nullptr;
     FinishPipeline* finish = nullptr;
 
-    ShadowResource* shadowResource;
+    ClusterForwardResource* cfResource;
     LightResource* lightResource;
     IBLResource* iblResource;
 

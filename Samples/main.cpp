@@ -1,10 +1,15 @@
-#include "Apps/PBRShadowApp.hpp"
+#include "Apps/PBRBindlessApp.hpp" // Bindless, using draw indirect, buffer device address, and descriptor indexing
+#include "Apps/PBRShadowApp.hpp" // Shadow demo, using draw indirect, buffer device address, and descriptor indexing
+#include "Apps/FrustumCullingApp.hpp"
+#include "Apps/PBRClusterForwardApp.hpp"
+#include "Apps/SkinningSample.hpp"
+
 
 int main(int argc, char* argv[])
 {
     try
 	{
-		PBRShadowApp app;
+		FrustumCullingApp app;
 		app.Run();
 	}
 	catch (std::exception& e)

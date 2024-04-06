@@ -7,8 +7,8 @@ class ResourceBase
 {
     friend class GraphicsDevice;
 public:
-    ResourceBase(GraphicsDevice* gd, bool resetWhenSwapUpdates = false)
-        : gd(gd), resetWhenSwapUpdates(resetWhenSwapUpdates) {}
+    ResourceBase(GraphicsDevice* gd, bool recreateWhenSwapChanges = false)
+        : gd(gd), recreateWhenSwapChanges(recreateWhenSwapChanges) {}
     virtual ~ResourceBase() = default;
 
     virtual void Create() {}
@@ -16,5 +16,5 @@ public:
 protected:
     GraphicsDevice* gd;
 private:
-    bool resetWhenSwapUpdates;
+    bool recreateWhenSwapChanges;
 };

@@ -47,6 +47,7 @@ public:
         }
 
         _camera->SetPosition(cameraPosition);
+        return;
 
         if (_mouseFirstUse)
         {

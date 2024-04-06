@@ -466,7 +466,7 @@ void GraphicsDevice::HandleResize()
 
 	for(auto& res : resources) 
 	{ 
-		if(res && res->resetWhenSwapUpdates)
+		if(res && res->recreateWhenSwapChanges)
 		{
 			res->Create();
 		}  
@@ -638,6 +638,7 @@ void GraphicsDevice::SetupDeviceFeatures()
 	features.multiDrawIndirect = VK_TRUE;
 	features.drawIndirectFirstInstance = VK_TRUE;
 	features.shaderSampledImageArrayDynamicIndexing = VK_TRUE;
+	features.wideLines = VK_TRUE;
 
 	features13 =
 	{

@@ -3,7 +3,6 @@
 #include <Graphics/GraphicsDevice.hpp>
 #include <Graphics/Resource.hpp>
 #include <Graphics/Buffer.hpp>
-#include "UIData.hpp"
 
 // A single light
 struct LightData

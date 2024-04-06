@@ -60,7 +60,7 @@ public:
         RecalculateMatrices();
     }
 
-    float SetNearPlane() const { return near; }
+    float GetNearPlane() const { return near; }
     void SetNearPlane(float near) 
     { 
         this->near = near; 

@@ -32,6 +32,5 @@ void Camera::RecalculateMatrices()
         projectionMatrix = glm::perspective(glm::radians(fov), aspectRatio, near,far);
     }
     projectionMatrix[1][1] *= -1;
-
     invProjectionMatrix = glm::inverse(projectionMatrix);
 }

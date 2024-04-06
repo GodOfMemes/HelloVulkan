@@ -124,7 +124,7 @@ struct ClusterForwardUBO
 	ClusterForwardUBO(glm::mat4 invProj, glm::mat4 view, glm::vec2 screenSize, float near, float far)
 		: cameraInverseProjection(invProj), cameraView(view), screenSize(screenSize), cameraNear(near), cameraFar(far)
 	{
-		float log2FarDivNear = std::log2(near / far);
+		float log2FarDivNear = std::log2(far / near);
 		float log2Near = std::log2(near);
 
 		sliceScaling = sliceCountZ / log2FarDivNear;
